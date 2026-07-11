@@ -1,0 +1,133 @@
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px 32px 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 14px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.paragraph {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0 0 16px;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.quoteWrap {
+  position: relative;
+}
+
+.quoteGlowBlock {
+  position: absolute;
+  inset: 20px -16px auto auto;
+  width: 130px;
+  height: 130px;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+  border-radius: 20px;
+  opacity: 0.14;
+}
+
+.quoteCard {
+  position: relative;
+  background: var(--color-surface-dark);
+  border-radius: 20px;
+  padding: 40px 36px;
+  overflow: hidden;
+}
+
+.quoteGlow {
+  position: absolute;
+  bottom: -50px;
+  left: -30px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(108, 92, 231, 0.45), transparent 70%);
+  filter: blur(14px);
+}
+
+.quoteContent {
+  position: relative;
+  z-index: 1;
+}
+
+.quoteMark {
+  font-family: var(--font-display);
+  font-size: 44px;
+  line-height: 1;
+  color: var(--color-primary-light);
+  margin-bottom: 16px;
+}
+
+.quoteText {
+  font-size: 19px;
+  line-height: 1.55;
+  color: #e8ecf5;
+  margin: 0 0 22px;
+  font-weight: 500;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-display);
+  flex-shrink: 0;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+}
+
+.role {
+  font-size: 13px;
+  color: #8b93a8;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,49 @@
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -18px) scale(1.06); }
+  66% { transform: translate(-16px, 12px) scale(0.96); }
+}
+
+.panel {
+  background: linear-gradient(120deg, var(--color-primary), var(--color-primary-light) 55%, var(--color-primary-dark));
+  border-radius: var(--radius-xl);
+  padding: 64px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  animation: blob 15s ease-in-out infinite;
+}
+
+.blobOne {
+  top: -60px;
+  left: -40px;
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.blobTwo {
+  bottom: -80px;
+  right: -30px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.09);
+  animation-duration: 18s;
+  animation-direction: reverse;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 560px) {
+  .panel {
+    padding: 48px 28px;
+  }
+}

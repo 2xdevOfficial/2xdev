@@ -1,0 +1,107 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 22px;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(15, 27, 45, 0.08);
+  border-color: var(--color-primary-soft-border);
+  color: inherit;
+}
+
+.icon {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--color-primary-soft-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: var(--color-text);
+}
+
+.cardValue {
+  font-size: 14.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.promise {
+  background: var(--color-surface-dark);
+  border-radius: 16px;
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+}
+
+.promiseGlow {
+  position: absolute;
+  top: -40px;
+  right: -30px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(108, 92, 231, 0.5), transparent 70%);
+  filter: blur(14px);
+}
+
+.promiseContent {
+  position: relative;
+  z-index: 1;
+}
+
+.promiseEyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: 12px;
+}
+
+.promiseText {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: #c9d0de;
+  margin: 0 0 18px;
+}
+
+.stats {
+  display: flex;
+  gap: 22px;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+}
+
+.statLabel {
+  font-size: 12.5px;
+  color: #8b93a8;
+}

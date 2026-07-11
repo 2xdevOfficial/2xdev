@@ -1,0 +1,11 @@
+/* Keyframes live locally in each .module.css file that uses them — Lightning
+   CSS's CSS Modules scoping hashes `animation` references, so a shared
+   @keyframes here would never match up with the hashed reference. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
