@@ -10,21 +10,22 @@ interface ButtonProps {
   variant?: Variant;
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
-export function Button({ href, variant = 'primary', children, className }: ButtonProps) {
+export function Button({ href, variant = 'primary', children, className, onClick }: ButtonProps) {
   const classes = [styles.button, styles[variant], className].filter(Boolean).join(' ');
 
   if (isInternalHref(href)) {
     return (
-      <Link to={href} className={classes}>
+      <Link to={href} className={classes} onClick={onClick}>
         {children}
       </Link>
     );
   }
 
   return (
-    <a href={href} className={classes}>
+    <a href={href} className={classes} onClick={onClick}>
       {children}
     </a>
   );
