@@ -38,6 +38,8 @@ export interface Project {
   bg2: string;
   /** Real project screenshot. Falls back to the bg1/bg2 gradient when omitted. */
   image?: string;
+  /** Live site URL. When set, the card links out to it instead of /contact. */
+  liveUrl?: string;
 }
 
 export interface ProcessStep {

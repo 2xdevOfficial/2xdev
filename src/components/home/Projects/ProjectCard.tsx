@@ -9,7 +9,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <Link
-      to="/contact"
+      to="/projects"
       ref={ref}
       className={[styles.card, reveal.reveal, isVisible ? reveal.visible : ''].join(' ')}
     >

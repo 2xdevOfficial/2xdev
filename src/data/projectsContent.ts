@@ -3,6 +3,8 @@ import type { FeaturedProject } from '../types/projects';
 import type { StatItem } from '../types/shared';
 import dairyFarmProductsShot from '../assets/images/projects/dairy-farm-products.webp';
 
+const DAIRY_FARM_PRODUCTS_URL = 'https://dairyfarmproduct.co.uk/';
+
 export const projectStats: StatItem[] = [
   { num: '250+', label: 'Projects delivered' },
   { num: '98%', label: 'Client satisfaction' },
@@ -20,6 +22,7 @@ export const featuredProject: FeaturedProject = {
     { value: '0%', label: 'platform fees' },
   ],
   image: dairyFarmProductsShot,
+  liveUrl: DAIRY_FARM_PRODUCTS_URL,
 };
 
 export const projectCategories: string[] = [
@@ -31,7 +34,7 @@ export const projectCategories: string[] = [
 ];
 
 export const allProjects: Project[] = [
-  { name: 'Dairy Farm Products', cat: 'E-commerce', desc: 'Custom-built online grocery storefront for fresh milk, cheese, butter and eggs — no Shopify, just a bespoke Next.js build with its own catalog and admin dashboard.', metric: '0% platform fees', stack: 'Next.js · React', bg1: '#1f8a6f', bg2: '#30b3a3', image: dairyFarmProductsShot },
+  { name: 'Dairy Farm Products', cat: 'E-commerce', desc: 'Custom-built online grocery storefront for fresh milk, cheese, butter and eggs — no Shopify, just a bespoke Next.js build with its own catalog and admin dashboard.', metric: '0% platform fees', stack: 'Next.js · React', bg1: '#1f8a6f', bg2: '#30b3a3', image: dairyFarmProductsShot, liveUrl: DAIRY_FARM_PRODUCTS_URL },
   { name: 'Meridian OS', cat: 'Management System', desc: 'A multi-tenant operations platform handling scheduling, billing and reporting.', metric: '12k daily users', stack: 'Laravel · Angular', bg1: '#0f1b2d', bg2: '#1c2c46' },
   { name: 'Founderly', cat: 'Startup Website', desc: 'Brand, marketing site and investor MVP shipped end to end in five weeks.', metric: '0 → launch in 5 wks', stack: 'React · WordPress', bg1: '#4a3ed1', bg2: '#6c5ce7' },
   { name: 'Cobalt Retail', cat: 'E-commerce', desc: 'Multi-region storefront with localised pricing, currencies and fulfilment.', metric: '+38% AOV', stack: 'Shopify · Node', bg1: '#6c5ce7', bg2: '#8b7dff' },

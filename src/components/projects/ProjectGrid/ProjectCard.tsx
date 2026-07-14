@@ -3,8 +3,8 @@ import type { Project } from '../../../types/home';
 import styles from './ProjectGrid.module.css';
 
 export function ProjectCard({ project }: { project: Project }) {
-  return (
-    <Link to="/contact" className={styles.card}>
+  const content = (
+    <>
       <div
         className={styles.thumb}
         style={{
@@ -26,6 +26,20 @@ export function ProjectCard({ project }: { project: Project }) {
           <span className={styles.stack}>{project.stack}</span>
         </div>
       </div>
+    </>
+  );
+
+  if (project.liveUrl) {
+    return (
+      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.card}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link to="/contact" className={styles.card}>
+      {content}
     </Link>
   );
 }
