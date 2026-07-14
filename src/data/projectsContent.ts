@@ -4,6 +4,7 @@ import type { StatItem } from '../types/shared';
 import dairyFarmProductsShot from '../assets/images/projects/dairy-farm-products.webp';
 
 const DAIRY_FARM_PRODUCTS_URL = 'https://dairyfarmproduct.co.uk/';
+const RECRUITED_PEOPLE_URL = 'https://recruitedpeople.co.uk/';
 
 export const projectStats: StatItem[] = [
   { num: '250+', label: 'Projects delivered' },
@@ -35,7 +36,7 @@ export const projectCategories: string[] = [
 
 export const allProjects: Project[] = [
   { name: 'Dairy Farm Products', cat: 'E-commerce', desc: 'Custom-built online grocery storefront for fresh milk, cheese, butter and eggs — no Shopify, just a bespoke Next.js build with its own catalog and admin dashboard.', metric: '0% platform fees', stack: 'Next.js · React', bg1: '#1f8a6f', bg2: '#30b3a3', image: dairyFarmProductsShot, liveUrl: DAIRY_FARM_PRODUCTS_URL },
-  { name: 'Meridian OS', cat: 'Management System', desc: 'A multi-tenant operations platform handling scheduling, billing and reporting.', metric: '12k daily users', stack: 'Laravel · Angular', bg1: '#0f1b2d', bg2: '#1c2c46' },
+  { name: 'Recruited People', cat: 'Management System', desc: 'An education recruitment platform — candidate registration, compliance document tracking (DBS, safeguarding) and interview scheduling in one dashboard.', metric: 'Full compliance tracking', stack: 'React · Node', bg1: '#243b4a', bg2: '#5b8fb9', liveUrl: RECRUITED_PEOPLE_URL },
   { name: 'Founderly', cat: 'Startup Website', desc: 'Brand, marketing site and investor MVP shipped end to end in five weeks.', metric: '0 → launch in 5 wks', stack: 'React · WordPress', bg1: '#4a3ed1', bg2: '#6c5ce7' },
   { name: 'Cobalt Retail', cat: 'E-commerce', desc: 'Multi-region storefront with localised pricing, currencies and fulfilment.', metric: '+38% AOV', stack: 'Shopify · Node', bg1: '#6c5ce7', bg2: '#8b7dff' },
   { name: 'Brightwave CRM', cat: 'Management System', desc: 'Custom CRM and pipeline dashboard replacing three legacy spreadsheets.', metric: '9h saved / week', stack: 'Laravel · Vue', bg1: '#1c2c46', bg2: '#2a3f63' },
