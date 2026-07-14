@@ -1,6 +1,7 @@
 import type { Project } from '../types/home';
 import type { FeaturedProject } from '../types/projects';
 import type { StatItem } from '../types/shared';
+import dairyFarmProductsShot from '../assets/images/projects/dairy-farm-products.webp';
 
 export const projectStats: StatItem[] = [
   { num: '250+', label: 'Projects delivered' },
@@ -11,13 +12,14 @@ export const projectStats: StatItem[] = [
 
 export const featuredProject: FeaturedProject = {
   tag: 'Featured case study',
-  name: 'NorthLane Retail',
-  desc: 'A headless Shopify storefront rebuilt from the ground up for speed, with a custom bundle-builder checkout that lifted average order value.',
+  name: 'Dairy Farm Products',
+  desc: 'A fully custom online grocery storefront for fresh milk, cheese, butter and eggs — built from scratch on Next.js with its own product catalog, categories and admin dashboard, instead of a templated Shopify build.',
   metrics: [
-    { value: '+64%', label: 'conversion' },
-    { value: '1.2s', label: 'load time' },
-    { value: '6 wks', label: 'to launch' },
+    { value: 'Custom', label: 'Next.js build' },
+    { value: '20+', label: 'product categories' },
+    { value: '0%', label: 'platform fees' },
   ],
+  image: dairyFarmProductsShot,
 };
 
 export const projectCategories: string[] = [
@@ -29,7 +31,7 @@ export const projectCategories: string[] = [
 ];
 
 export const allProjects: Project[] = [
-  { name: 'NorthLane Retail', cat: 'E-commerce', desc: 'Headless Shopify storefront rebuilt for speed, with a custom bundle-builder checkout.', metric: '+64% conversion', stack: 'Shopify · React', bg1: '#5b4ee6', bg2: '#6c5ce7' },
+  { name: 'Dairy Farm Products', cat: 'E-commerce', desc: 'Custom-built online grocery storefront for fresh milk, cheese, butter and eggs — no Shopify, just a bespoke Next.js build with its own catalog and admin dashboard.', metric: '0% platform fees', stack: 'Next.js · React', bg1: '#1f8a6f', bg2: '#30b3a3', image: dairyFarmProductsShot },
   { name: 'Meridian OS', cat: 'Management System', desc: 'A multi-tenant operations platform handling scheduling, billing and reporting.', metric: '12k daily users', stack: 'Laravel · Angular', bg1: '#0f1b2d', bg2: '#1c2c46' },
   { name: 'Founderly', cat: 'Startup Website', desc: 'Brand, marketing site and investor MVP shipped end to end in five weeks.', metric: '0 → launch in 5 wks', stack: 'React · WordPress', bg1: '#4a3ed1', bg2: '#6c5ce7' },
   { name: 'Cobalt Retail', cat: 'E-commerce', desc: 'Multi-region storefront with localised pricing, currencies and fulfilment.', metric: '+38% AOV', stack: 'Shopify · Node', bg1: '#6c5ce7', bg2: '#8b7dff' },

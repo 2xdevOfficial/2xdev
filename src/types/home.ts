@@ -36,6 +36,8 @@ export interface Project {
   stack: string;
   bg1: string;
   bg2: string;
+  /** Real project screenshot. Falls back to the bg1/bg2 gradient when omitted. */
+  image?: string;
 }
 
 export interface ProcessStep {

@@ -9,6 +9,7 @@ import type {
   TechGroup,
   WhyUsItem,
 } from "../types/home";
+import dairyFarmProductsShot from "../assets/images/projects/dairy-farm-products.webp";
 
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
@@ -123,13 +124,14 @@ export const techGroups: TechGroup[] = [
 
 export const projects: Project[] = [
   {
-    name: "NorthLane Retail",
+    name: "Dairy Farm Products",
     cat: "E-commerce",
-    desc: "Headless Shopify storefront rebuilt for speed, with a custom bundle-builder checkout.",
-    metric: "+64% conversion",
-    stack: "Shopify · React",
-    bg1: "#5b4ee6",
-    bg2: "#6c5ce7",
+    desc: "Custom-built online grocery storefront for fresh milk, cheese, butter and eggs — no Shopify, just a bespoke Next.js build with its own catalog and admin dashboard.",
+    metric: "0% platform fees",
+    stack: "Next.js · React",
+    bg1: "#1f8a6f",
+    bg2: "#30b3a3",
+    image: dairyFarmProductsShot,
   },
   {
     name: "Meridian OS",

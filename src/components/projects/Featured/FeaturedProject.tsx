@@ -24,7 +24,15 @@ export function FeaturedProject() {
           </div>
         </div>
         <div className={styles.visual}>
-          <span className={styles.shotLabel}>[ project shot ]</span>
+          {featuredProject.image ? (
+            <img
+              src={featuredProject.image}
+              alt={featuredProject.name}
+              className={styles.shotImage}
+            />
+          ) : (
+            <span className={styles.shotLabel}>[ project shot ]</span>
+          )}
         </div>
       </Link>
     </section>

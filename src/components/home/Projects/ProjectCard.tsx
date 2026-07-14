@@ -20,7 +20,11 @@ export function ProjectCard({ project }: { project: Project }) {
         }}
       >
         <span className={styles.category}>{project.cat}</span>
-        <span className={styles.shotLabel}>[ project shot ]</span>
+        {project.image ? (
+          <img src={project.image} alt={project.name} className={styles.shotImage} />
+        ) : (
+          <span className={styles.shotLabel}>[ project shot ]</span>
+        )}
       </div>
       <div className={styles.body}>
         <h3 className={styles.cardTitle}>{project.name}</h3>

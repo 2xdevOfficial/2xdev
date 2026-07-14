@@ -8,4 +8,6 @@ export interface FeaturedProject {
   name: string;
   desc: string;
   metrics: FeaturedMetric[];
+  /** Real project screenshot. Falls back to a gradient when omitted. */
+  image?: string;
 }

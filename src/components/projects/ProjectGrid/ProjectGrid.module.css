@@ -74,6 +74,8 @@
 }
 
 .category {
+  position: relative;
+  z-index: 1;
   background: rgba(255, 255, 255, 0.92);
   color: var(--color-surface-dark);
   font-size: 12px;
@@ -84,10 +86,22 @@
 }
 
 .shotLabel {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-mono);
   font-size: 11px;
   color: rgba(255, 255, 255, 0.85);
   letter-spacing: 0.05em;
+}
+
+.shotImage {
+  position: absolute;
+  inset: 14px;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  object-fit: contain;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .body {
