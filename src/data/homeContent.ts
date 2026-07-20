@@ -184,7 +184,7 @@ export const testimonials: Testimonial[] = [
     quote:
       '"2xdev rebuilt our store and doubled our checkout speed. Sales followed almost immediately."',
     name: "Sarah Whitfield",
-    role: "Founder, NorthLane",
+    role: "Founder, Dairy Farm Products",
     init: "SW",
     av: "#5b4ee6",
   },
@@ -192,16 +192,16 @@ export const testimonials: Testimonial[] = [
     quote:
       '"They shipped our internal platform in half the time other agencies quoted — and it just works."',
     name: "James Okonkwo",
-    role: "COO, Meridian",
+    role: "COO, Recruited People",
     init: "JO",
     av: "#0f1b2d",
   },
   {
     quote:
       '"From brand to launch in five weeks. They felt like part of our team, not a vendor."',
-    name: "Priya Nair",
-    role: "CEO, Founderly",
-    init: "PN",
+    name: "Syed Nasir",
+    role: "CEO, CNI News",
+    init: "SN",
     av: "#6c5ce7",
   },
 ];
