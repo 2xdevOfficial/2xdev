@@ -45,9 +45,9 @@ export const clientRow: string[] = [
 ];
 
 export const stats: Stat[] = [
-  { num: "250+", count: 250, suffix: "+", label: "Projects delivered" },
-  { num: "8", count: 8, suffix: "", label: "Years in business" },
-  { num: "40+", count: 40, suffix: "+", label: "Team members" },
+  { num: "50+", count: 50, suffix: "+", label: "Projects delivered" },
+  { num: "4", count: 4, suffix: "", label: "Years in business" },
+  { num: "5+", count: 5, suffix: "+", label: "Team members" },
   { num: "98%", count: 98, suffix: "%", label: "Client satisfaction" },
 ];
 
