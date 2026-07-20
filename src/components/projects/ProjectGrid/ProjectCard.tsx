@@ -13,7 +13,13 @@ export function ProjectCard({ project }: { project: Project }) {
       >
         <span className={styles.category}>{project.cat}</span>
         {project.image ? (
-          <img src={project.image} alt={project.name} className={styles.shotImage} />
+          <img
+            src={project.image}
+            alt={project.name}
+            className={[styles.shotImage, project.imageFit === 'cover' ? styles.shotImageCover : '']
+              .filter(Boolean)
+              .join(' ')}
+          />
         ) : (
           <span className={styles.shotLabel}>[ project shot ]</span>
         )}

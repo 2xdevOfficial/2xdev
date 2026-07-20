@@ -10,6 +10,7 @@ import type {
   WhyUsItem,
 } from "../types/home";
 import dairyFarmProductsShot from "../assets/images/projects/dairy-farm-products.webp";
+import cniNewsCover from "../assets/images/projects/cni-news-cover.jpg";
 
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
@@ -143,13 +144,15 @@ export const projects: Project[] = [
     bg2: "#5b8fb9",
   },
   {
-    name: "Founderly",
-    cat: "Startup Website",
-    desc: "Brand, marketing site and investor MVP shipped end to end in five weeks.",
-    metric: "0 → launch in 5 wks",
-    stack: "React · WordPress",
-    bg1: "#4a3ed1",
-    bg2: "#6c5ce7",
+    name: "CNI News",
+    cat: "CMS",
+    desc: "A WordPress-powered news platform for Pakistani and British-Pakistani community coverage — breaking news, video and event listings across a dozen categories.",
+    metric: "12 news categories",
+    stack: "WordPress · PHP",
+    bg1: "#0d1b4d",
+    bg2: "#dc2626",
+    image: cniNewsCover,
+    imageFit: "cover",
   },
 ];
 

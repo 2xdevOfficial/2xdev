@@ -38,6 +38,12 @@ export interface Project {
   bg2: string;
   /** Real project screenshot. Falls back to the bg1/bg2 gradient when omitted. */
   image?: string;
+  /**
+   * How the image fills the thumbnail. 'contain' floats it on the gradient
+   * (good for transparent product shots), 'cover' fills edge-to-edge
+   * (better for dense website screenshots). Defaults to 'contain'.
+   */
+  imageFit?: 'contain' | 'cover';
   /** Live site URL. When set, the card links out to it instead of /contact. */
   liveUrl?: string;
 }

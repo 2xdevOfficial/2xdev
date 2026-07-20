@@ -2,9 +2,11 @@ import type { Project } from '../types/home';
 import type { FeaturedProject } from '../types/projects';
 import type { StatItem } from '../types/shared';
 import dairyFarmProductsShot from '../assets/images/projects/dairy-farm-products.webp';
+import cniNewsShot from '../assets/images/projects/cni-news-shot.jpg';
 
 const DAIRY_FARM_PRODUCTS_URL = 'https://dairyfarmproduct.co.uk/';
 const RECRUITED_PEOPLE_URL = 'https://recruitedpeople.co.uk/';
+const CNI_NEWS_URL = 'https://cninews.tv/';
 
 export const projectStats: StatItem[] = [
   { num: '250+', label: 'Projects delivered' },
@@ -26,22 +28,10 @@ export const featuredProject: FeaturedProject = {
   liveUrl: DAIRY_FARM_PRODUCTS_URL,
 };
 
-export const projectCategories: string[] = [
-  'All',
-  'E-commerce',
-  'Management System',
-  'Startup Website',
-  'CMS',
-];
+export const projectCategories: string[] = ['All', 'E-commerce', 'Management System', 'CMS'];
 
 export const allProjects: Project[] = [
   { name: 'Dairy Farm Products', cat: 'E-commerce', desc: 'Custom-built online grocery storefront for fresh milk, cheese, butter and eggs — no Shopify, just a bespoke Next.js build with its own catalog and admin dashboard.', metric: '0% platform fees', stack: 'Next.js · React', bg1: '#1f8a6f', bg2: '#30b3a3', image: dairyFarmProductsShot, liveUrl: DAIRY_FARM_PRODUCTS_URL },
   { name: 'Recruited People', cat: 'Management System', desc: 'An education recruitment platform — candidate registration, compliance document tracking (DBS, safeguarding) and interview scheduling in one dashboard.', metric: 'Full compliance tracking', stack: 'React · Node', bg1: '#243b4a', bg2: '#5b8fb9', liveUrl: RECRUITED_PEOPLE_URL },
-  { name: 'Founderly', cat: 'Startup Website', desc: 'Brand, marketing site and investor MVP shipped end to end in five weeks.', metric: '0 → launch in 5 wks', stack: 'React · WordPress', bg1: '#4a3ed1', bg2: '#6c5ce7' },
-  { name: 'Cobalt Retail', cat: 'E-commerce', desc: 'Multi-region storefront with localised pricing, currencies and fulfilment.', metric: '+38% AOV', stack: 'Shopify · Node', bg1: '#6c5ce7', bg2: '#8b7dff' },
-  { name: 'Brightwave CRM', cat: 'Management System', desc: 'Custom CRM and pipeline dashboard replacing three legacy spreadsheets.', metric: '9h saved / week', stack: 'Laravel · Vue', bg1: '#1c2c46', bg2: '#2a3f63' },
-  { name: 'Halcyon Health', cat: 'Startup Website', desc: 'Accessible marketing site and booking MVP for a wellbeing startup.', metric: '4.9 Lighthouse', stack: 'React · Node', bg1: '#4a3ed1', bg2: '#5b4ee6' },
-  { name: 'Ledger CMS', cat: 'CMS', desc: 'Editor-friendly headless CMS powering a 500-page publication.', metric: '3× faster edits', stack: 'WordPress · Node', bg1: '#21759b', bg2: '#2a8fbb' },
-  { name: 'Square Pay Portal', cat: 'CMS', desc: 'Square-powered payments and content portal for a services business.', metric: '99.98% uptime', stack: 'Square · Laravel', bg1: '#0f1b2d', bg2: '#2b2b2b' },
-  { name: 'Verge Analytics', cat: 'Management System', desc: 'Real-time analytics dashboard with role-based access and exports.', metric: '2M events/day', stack: 'Angular · Node', bg1: '#5b4ee6', bg2: '#4a3ed1' },
+  { name: 'CNI News', cat: 'CMS', desc: 'A WordPress-powered news platform for Pakistani and British-Pakistani community coverage — breaking news, video and event listings across a dozen categories.', metric: '12 news categories', stack: 'WordPress · PHP', bg1: '#0d1b4d', bg2: '#dc2626', image: cniNewsShot, imageFit: 'cover', liveUrl: CNI_NEWS_URL },
 ];
