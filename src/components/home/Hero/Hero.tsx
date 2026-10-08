@@ -14,7 +14,7 @@ export function Hero() {
         <div>
           <div className={styles.badge}>
             <span className={styles.badgeDot} />
-            Web development company · United Kingdom
+            Software &amp; digital product studio · United Kingdom
           </div>
 
           <h1 className={styles.title}>
@@ -22,8 +22,9 @@ export function Hero() {
           </h1>
 
           <p className={styles.subtitle}>
-            We&apos;re a UK web development company that partners with founders and teams to
-            design, build and scale the software behind their business — from high-converting stores to the platforms that run entire
+            We&apos;re a UK software company that partners with founders and teams to design,
+            build and scale the technology behind their business — from websites and online
+            stores to custom platforms, AI-powered tools and the systems that run entire
             operations. Fewer bottlenecks, cleaner code, twice the pace.
           </p>
 
