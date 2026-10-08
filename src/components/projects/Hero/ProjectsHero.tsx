@@ -4,7 +4,7 @@ import utilities from '../../../styles/utilities.module.css';
 export function ProjectsHero() {
   return (
     <PageHero
-      badge="250+ projects delivered"
+      badge="50+ projects delivered"
       title={
         <>
           Work we&apos;re <span className={utilities.accent}>proud to ship.</span>

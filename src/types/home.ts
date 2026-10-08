@@ -12,6 +12,8 @@ export interface Stat {
 
 export interface Service {
   no: string;
+  /** Slug of the matching landing page in data/servicePages.ts */
+  slug: string;
   title: string;
   desc: string;
   tags: string;

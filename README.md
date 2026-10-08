@@ -66,3 +66,12 @@ Dark mode is driven by a `data-theme` attribute on `<html>`, backed by CSS custo
 - **Generated at build:** `dist/sitemap.xml` (all indexable pages) and `dist/404.html` (`noindex`).
 - **Static files in `public/`:** `robots.txt`, `site.webmanifest`, `favicon.svg/.ico`, app icons and `og-image.png` (1200×630 social share image).
 - **Adding a page:** add the route in `src/AppRoutes.tsx`, add an entry to `pages` in `src/seo/config.ts` (with `sitemap`), and render `<Seo page="yourKey" />` in the page component.
+
+### Service landing pages
+
+Each service has its own keyword-targeted page at `/services/<slug>`, generated from `src/data/servicePages.ts` (copy, FAQs, related projects, structured data). Add or edit a service there — routes, sitemap, `llms.txt` and schema update automatically on the next build.
+
+### After each deploy
+
+- `npm run indexnow` — pings Bing/IndexNow (which also feeds ChatGPT search and Copilot) with every URL in the sitemap.
+- Google: resubmit the sitemap or use **URL Inspection → Request indexing** in Search Console for pages you changed.

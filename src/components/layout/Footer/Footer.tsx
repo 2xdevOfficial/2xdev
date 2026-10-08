@@ -28,7 +28,7 @@ export function Footer() {
         <div>
           <img src={logo} loading="lazy" decoding="async" alt="2xdev — web development agency" width={79} height={30} className={styles.logo} />
           <p className={styles.blurb}>
-            A UK-based engineering partner building fast, reliable software for startups and
+            A UK web development company building fast, reliable websites and software for startups and
             growing businesses.
           </p>
         </div>

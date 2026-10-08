@@ -48,6 +48,14 @@
   color: var(--color-text);
 }
 
+.titleLink {
+  color: inherit;
+}
+
+.titleLink:hover {
+  color: var(--color-primary);
+}
+
 .desc {
   font-size: 15.5px;
   line-height: 1.6;

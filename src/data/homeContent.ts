@@ -54,36 +54,42 @@ export const stats: Stat[] = [
 export const services: Service[] = [
   {
     no: "01",
+    slug: "web-development",
     title: "Custom Web Development",
     desc: "Bespoke web apps and sites engineered from scratch for performance, SEO and scale.",
     tags: "Angular · React · Node",
   },
   {
     no: "02",
+    slug: "ecommerce-development",
     title: "E-commerce & Shopify",
     desc: "Conversion-focused stores — from headless Shopify builds to full custom checkouts.",
     tags: "Shopify · WooCommerce",
   },
   {
     no: "03",
+    slug: "startup-mvp-development",
     title: "Startup & Business Sites",
     desc: "Launch-ready marketing sites and MVPs that make early-stage teams look enterprise.",
     tags: "React · WordPress",
   },
   {
     no: "04",
+    slug: "management-systems",
     title: "Management Systems",
     desc: "Internal tools, dashboards and CRMs that automate the work your team hates doing.",
     tags: "Laravel · Node",
   },
   {
     no: "05",
+    slug: "cms-wordpress-development",
     title: "CMS Development",
     desc: "Flexible, editor-friendly content platforms your marketing team can actually run.",
     tags: "WordPress · Square",
   },
   {
     no: "06",
+    slug: "api-integrations",
     title: "API & Integrations",
     desc: "Robust APIs and third-party integrations that connect your stack end to end.",
     tags: "Node · Laravel",
@@ -238,10 +244,12 @@ export const footerCols: FooterColumn[] = [
   {
     title: "Services",
     links: [
-      { label: "Web Development", href: "/#services" },
-      { label: "E-commerce", href: "/#services" },
-      { label: "Management Systems", href: "/#services" },
-      { label: "CMS & WordPress", href: "/#services" },
+      { label: "Website Development", href: "/services/web-development" },
+      { label: "E-commerce & Shopify", href: "/services/ecommerce-development" },
+      { label: "Startup & MVP", href: "/services/startup-mvp-development" },
+      { label: "Management Systems", href: "/services/management-systems" },
+      { label: "CMS & WordPress", href: "/services/cms-wordpress-development" },
+      { label: "API & Integrations", href: "/services/api-integrations" },
     ],
   },
   {

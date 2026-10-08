@@ -14,7 +14,11 @@ export function ServiceDetailRow({ service }: { service: ServiceDetail }) {
     >
       <div className={styles.icon}>{service.icon}</div>
       <div>
-        <h3 className={styles.title}>{service.title}</h3>
+        <h3 className={styles.title}>
+          <Link to={`/services/${service.slug}`} className={styles.titleLink}>
+            {service.title}
+          </Link>
+        </h3>
         <p className={styles.desc}>{service.desc}</p>
         <div className={styles.tags}>
           {service.tags.map((tag) => (
@@ -24,8 +28,12 @@ export function ServiceDetailRow({ service }: { service: ServiceDetail }) {
           ))}
         </div>
       </div>
-      <Link to="/contact" className={styles.cta}>
-        Discuss this →
+      <Link
+        to={`/services/${service.slug}`}
+        className={styles.cta}
+        aria-label={`Learn more about ${service.title}`}
+      >
+        Learn more →
       </Link>
     </div>
   );

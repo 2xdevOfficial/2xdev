@@ -14,7 +14,7 @@ export function Hero() {
         <div>
           <div className={styles.badge}>
             <span className={styles.badgeDot} />
-            Trusted engineering partner · United Kingdom
+            Web development company · United Kingdom
           </div>
 
           <h1 className={styles.title}>

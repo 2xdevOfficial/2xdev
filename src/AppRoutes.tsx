@@ -6,6 +6,8 @@ import { About } from './pages/About/About';
 import { Projects } from './pages/Projects/Projects';
 import { Contact } from './pages/Contact/Contact';
 import { ComingSoon } from './pages/ComingSoon/ComingSoon';
+import { ServicePage } from './pages/Service/ServicePage';
+import { servicePages } from './data/servicePages';
 
 /** Route table shared by the browser app (App.tsx) and the build-time prerenderer (entry-server.tsx). */
 export function AppRoutes() {
@@ -17,6 +19,13 @@ export function AppRoutes() {
         <Route path="about" element={<About />} />
         <Route path="projects" element={<Projects />} />
         <Route path="contact" element={<Contact />} />
+        {servicePages.map((service) => (
+          <Route
+            key={service.slug}
+            path={`services/${service.slug}`}
+            element={<ServicePage key={service.slug} slug={service.slug} />}
+          />
+        ))}
         <Route path="*" element={<ComingSoon />} />
       </Route>
     </Routes>

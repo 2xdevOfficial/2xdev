@@ -24,7 +24,7 @@ const ssrEntry = ['entry-server.js', 'entry-server.mjs']
   .find((file) => fs.existsSync(file));
 if (!ssrEntry) throw new Error('Server bundle not found in dist-ssr/. Did `vite build --ssr` run?');
 
-const { render, pages, indexablePages, headTagsFor, structuredDataFor, absoluteUrl } = await import(
+const { render, pages, indexablePages, headTagsFor, structuredDataFor, absoluteUrl, servicePages, SITE_URL } = await import(
   pathToFileURL(ssrEntry).href
 );
 
@@ -114,5 +114,28 @@ ${indexablePages
 `;
 fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap);
 console.log(`  wrote sitemap.xml (${indexablePages.length} URLs)`);
+
+// llms.txt — a plain-text summary for AI assistants and AI search (https://llmstxt.org)
+const llms = `# 2xdev
+
+> 2xdev (2xdev Ltd) is a UK-based web development company. A senior engineering team that designs, builds and scales custom websites, web applications, e-commerce stores, management systems, CMS platforms and API integrations for startups and growing businesses. Fixed, itemised quotes; weekly demos; clients own all code.
+
+- Website: ${SITE_URL}/
+- Contact: support@2xdev.com · ${SITE_URL}/contact
+- Location: United Kingdom (remote-first), serving clients across the UK and worldwide
+
+## Services
+
+${servicePages.map((s) => `- [${s.name}](${absoluteUrl(`/services/${s.slug}`)}): ${s.seoDescription}`).join('\n')}
+
+## Pages
+
+${indexablePages
+  .filter((page) => !page.path.startsWith('/services/'))
+  .map((page) => `- [${page.breadcrumb}](${absoluteUrl(page.path)}): ${page.description}`)
+  .join('\n')}
+`;
+fs.writeFileSync(path.join(distDir, 'llms.txt'), llms);
+console.log('  wrote llms.txt');
 
 fs.rmSync(ssrDir, { recursive: true, force: true });

@@ -1,6 +1,6 @@
 import { faqs, infoCards } from '../data/contactContent';
-import { serviceDetails } from '../data/whatWeDoContent';
 import { team } from '../data/aboutContent';
+import { servicePages, servicePath } from '../data/servicePages';
 
 /**
  * Single source of truth for SEO.
@@ -18,6 +18,16 @@ export const SITE_NAME = '2xdev';
 export const DEFAULT_OG_IMAGE = '/og-image.png';
 export const LOCALE = 'en_GB';
 
+/**
+ * Your official profiles elsewhere on the web. Google uses these (`sameAs`) to connect
+ * the 2xdev brand across sites, which strengthens brand searches and the knowledge panel.
+ * Add the full URLs of profiles you own, e.g.
+ *   'https://www.linkedin.com/company/2xdev',
+ *   'https://github.com/2xdev',
+ *   'https://clutch.co/profile/2xdev',
+ */
+export const SOCIAL_PROFILES: string[] = [];
+
 const EMAIL = 'support@2xdev.com';
 const PHONE = infoCards.find((card) => card.href.startsWith('tel:'))?.value ?? '+447368165714';
 
@@ -29,11 +39,13 @@ export interface PageSeo {
   noindex?: boolean;
   /** Label used in breadcrumbs. */
   breadcrumb?: string;
+  /** Key of the parent page, for nested breadcrumbs. */
+  parent?: string;
   /** Include in sitemap.xml */
   sitemap?: { priority: number; changefreq: 'weekly' | 'monthly' | 'yearly' };
 }
 
-export const pages = {
+const staticPages = {
   home: {
     path: '/',
     title: '2xdev — UK Web Development Agency for Startups & Businesses',
@@ -82,7 +94,29 @@ export const pages = {
   },
 } satisfies Record<string, PageSeo>;
 
-export type PageKey = keyof typeof pages;
+type StaticPageKey = keyof typeof staticPages;
+export type PageKey = StaticPageKey | `service:${string}`;
+
+export const serviceKey = (slug: string): PageKey => `service:${slug}`;
+
+/** Every page on the site, including one landing page per service. */
+export const pages: Record<string, PageSeo> = {
+  ...staticPages,
+  ...Object.fromEntries(
+    servicePages.map((service) => [
+      serviceKey(service.slug),
+      {
+        path: servicePath(service.slug),
+        title: service.seoTitle,
+        description: service.seoDescription,
+        breadcrumb: service.shortName,
+        parent: 'whatWeDo',
+        sitemap: { priority: 0.9, changefreq: 'monthly' },
+      } satisfies PageSeo,
+    ]),
+  ),
+};
+
 
 /** Routes that get their own prerendered HTML file. */
 export const indexablePages: PageSeo[] = (Object.values(pages) as PageSeo[]).filter((page) => !page.noindex);
@@ -100,11 +134,14 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
 
 type JsonLd = Record<string, unknown>;
 
+const serviceId = (slug: string) => `${absoluteUrl(servicePath(slug))}#service`;
+
 export function organizationSchema(): JsonLd {
   return {
     '@type': 'Organization',
     '@id': ORG_ID,
     name: SITE_NAME,
+    alternateName: ['2x dev', '2xdev Ltd', '2xdev.com'],
     legalName: '2xdev Ltd',
     url: `${SITE_URL}/`,
     logo: {
@@ -114,14 +151,15 @@ export function organizationSchema(): JsonLd {
       height: 512,
     },
     image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
+    slogan: 'Great products aren’t built. They’re engineered.',
     description:
-      'UK-based web development company building custom web apps, e-commerce stores, management systems and CMS platforms for startups and growing businesses.',
+      'UK-based web development company building custom websites, web apps, e-commerce stores, management systems and CMS platforms for startups and growing businesses.',
     email: EMAIL,
     telephone: PHONE,
     foundingDate: '2022',
     founders: team
       .filter((member) => member.role.toLowerCase().includes('founder'))
-      .map((member) => ({ '@type': 'Person', name: member.name })),
+      .map((member) => ({ '@type': 'Person', name: member.name, jobTitle: member.role })),
     address: { '@type': 'PostalAddress', addressCountry: 'GB' },
     areaServed: [
       { '@type': 'Country', name: 'United Kingdom' },
@@ -135,19 +173,31 @@ export function organizationSchema(): JsonLd {
       areaServed: 'GB',
       availableLanguage: ['English'],
     },
+    ...(SOCIAL_PROFILES.length ? { sameAs: SOCIAL_PROFILES } : {}),
     knowsAbout: [
-      'Web development',
+      'Website development',
+      'Web application development',
       'E-commerce development',
       'Shopify development',
       'WordPress development',
+      'MVP development',
+      'Custom software development',
+      'API integration',
+      'Technical SEO',
       'React',
       'Angular',
       'Next.js',
       'Laravel',
       'Node.js',
-      'Management systems',
-      'API integrations',
     ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Web development services',
+      itemListElement: servicePages.map((service) => ({
+        '@type': 'Offer',
+        itemOffered: { '@id': serviceId(service.slug), '@type': 'Service', name: service.name, url: absoluteUrl(servicePath(service.slug)) },
+      })),
+    },
   };
 }
 
@@ -163,17 +213,32 @@ export function websiteSchema(): JsonLd {
   };
 }
 
+/** Home › (parent ›) page */
+function breadcrumbTrail(page: PageSeo): PageSeo[] {
+  const trail: PageSeo[] = [page];
+  let parentKey = page.parent;
+  while (parentKey) {
+    const parent = pages[parentKey];
+    trail.unshift(parent);
+    parentKey = parent.parent;
+  }
+  if (trail[0] !== pages.home) trail.unshift(pages.home);
+  return trail;
+}
+
 function breadcrumbSchema(page: PageSeo): JsonLd {
   return {
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: pages.home.breadcrumb, item: absoluteUrl('/') },
-      { '@type': 'ListItem', position: 2, name: page.breadcrumb, item: absoluteUrl(page.path) },
-    ],
+    itemListElement: breadcrumbTrail(page).map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.breadcrumb,
+      item: absoluteUrl(crumb.path),
+    })),
   };
 }
 
-function webPageSchema(page: PageSeo, type = 'WebPage'): JsonLd {
+function webPageSchema(page: PageSeo, type = 'WebPage', extra: JsonLd = {}): JsonLd {
   return {
     '@type': type,
     '@id': `${absoluteUrl(page.path)}#webpage`,
@@ -183,6 +248,19 @@ function webPageSchema(page: PageSeo, type = 'WebPage'): JsonLd {
     inLanguage: 'en-GB',
     isPartOf: { '@id': WEBSITE_ID },
     about: { '@id': ORG_ID },
+    primaryImageOfPage: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
+    ...extra,
+  };
+}
+
+function faqSchema(items: { q: string; a: string }[]): JsonLd {
+  return {
+    '@type': 'FAQPage',
+    mainEntity: items.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
   };
 }
 
@@ -192,6 +270,36 @@ export function structuredDataFor(key: PageKey): JsonLd | null {
   if (page.noindex) return null;
 
   const graph: JsonLd[] = [organizationSchema(), websiteSchema()];
+
+  if (key.startsWith('service:')) {
+    const service = servicePages.find((item) => `service:${item.slug}` === key)!;
+    graph.push(
+      webPageSchema(page, 'WebPage', { mainEntity: { '@id': serviceId(service.slug) } }),
+      breadcrumbSchema(page),
+      {
+        '@type': 'Service',
+        '@id': serviceId(service.slug),
+        name: service.name,
+        serviceType: service.name,
+        alternateName: service.keywords,
+        description: service.seoDescription,
+        url: absoluteUrl(page.path),
+        provider: { '@id': ORG_ID },
+        areaServed: { '@type': 'Country', name: 'United Kingdom' },
+        audience: { '@type': 'BusinessAudience', audienceType: service.idealFor.join('; ') },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: `${service.name} services`,
+          itemListElement: service.deliverables.map((item) => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: item.title, description: item.desc },
+          })),
+        },
+      },
+      faqSchema(service.faqs),
+    );
+    return { '@context': 'https://schema.org', '@graph': graph };
+  }
 
   switch (key) {
     case 'home':
@@ -204,32 +312,19 @@ export function structuredDataFor(key: PageKey): JsonLd | null {
       graph.push(webPageSchema(page, 'CollectionPage'), breadcrumbSchema(page));
       break;
     case 'whatWeDo':
-      graph.push(webPageSchema(page), breadcrumbSchema(page), {
+      graph.push(webPageSchema(page, 'CollectionPage'), breadcrumbSchema(page), {
         '@type': 'ItemList',
         name: '2xdev web development services',
-        itemListElement: serviceDetails.map((service, index) => ({
+        itemListElement: servicePages.map((service, index) => ({
           '@type': 'ListItem',
           position: index + 1,
-          item: {
-            '@type': 'Service',
-            name: service.title,
-            description: service.desc,
-            serviceType: service.title,
-            provider: { '@id': ORG_ID },
-            areaServed: { '@type': 'Country', name: 'United Kingdom' },
-          },
+          url: absoluteUrl(servicePath(service.slug)),
+          name: service.name,
         })),
       });
       break;
     case 'contact':
-      graph.push(webPageSchema(page, 'ContactPage'), breadcrumbSchema(page), {
-        '@type': 'FAQPage',
-        mainEntity: faqs.map((faq) => ({
-          '@type': 'Question',
-          name: faq.q,
-          acceptedAnswer: { '@type': 'Answer', text: faq.a },
-        })),
-      });
+      graph.push(webPageSchema(page, 'ContactPage'), breadcrumbSchema(page), faqSchema(faqs));
       break;
   }
 
