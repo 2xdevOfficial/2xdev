@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { navLinks } from '../../../data/homeContent';
 import { useTheme } from '../../../hooks/useTheme';
 import { Button } from '../../ui/Button/Button';
-import logo from '../../../assets/images/logo.png';
+import logo from '../../../assets/images/logo-600.png';
 import styles from './Header.module.css';
 
 export function Header() {
@@ -30,9 +30,9 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <nav className={styles.nav}>
-        <Link to="/" className={styles.logoLink} onClick={closeMenu}>
-          <img src={logo} alt="2xdev" className={styles.logo} />
+      <nav className={styles.nav} aria-label="Main">
+        <Link to="/" className={styles.logoLink} onClick={closeMenu} aria-label="2xdev home">
+          <img src={logo} alt="2xdev — web development agency" width={90} height={34} className={styles.logo} />
         </Link>
 
         <div className={[styles.links, isMenuOpen ? styles.linksOpen : ''].join(' ')}>

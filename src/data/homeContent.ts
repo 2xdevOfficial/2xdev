@@ -10,7 +10,7 @@ import type {
   WhyUsItem,
 } from "../types/home";
 import dairyFarmProductsShot from "../assets/images/projects/dairy-farm-products.webp";
-import cniNewsCover from "../assets/images/projects/cni-news-cover.jpg";
+import cniNewsCover from "../assets/images/projects/cni-news-cover.webp";
 
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },

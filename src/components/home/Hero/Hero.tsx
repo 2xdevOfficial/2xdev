@@ -22,8 +22,8 @@ export function Hero() {
           </h1>
 
           <p className={styles.subtitle}>
-            We partner with founders and teams to design, build and scale the software behind
-            their business — from high-converting stores to the platforms that run entire
+            We&apos;re a UK web development company that partners with founders and teams to
+            design, build and scale the software behind their business — from high-converting stores to the platforms that run entire
             operations. Fewer bottlenecks, cleaner code, twice the pace.
           </p>
 

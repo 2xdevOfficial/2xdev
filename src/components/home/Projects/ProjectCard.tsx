@@ -23,7 +23,9 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.image ? (
           <img
             src={project.image}
-            alt={project.name}
+            alt={`${project.name} — ${project.cat.toLowerCase()} project built by 2xdev`}
+            loading="lazy"
+            decoding="async"
             className={[styles.shotImage, project.imageFit === 'cover' ? styles.shotImageCover : '']
               .filter(Boolean)
               .join(' ')}

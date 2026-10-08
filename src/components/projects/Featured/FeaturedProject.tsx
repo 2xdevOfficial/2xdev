@@ -28,7 +28,7 @@ export function FeaturedProject() {
         {featuredProject.image ? (
           <img
             src={featuredProject.image}
-            alt={featuredProject.name}
+            alt={`${featuredProject.name} website built by 2xdev`}
             className={styles.shotImage}
           />
         ) : (

@@ -8,10 +8,12 @@ import { Process } from '../../components/home/Process/Process';
 import { Testimonials } from '../../components/home/Testimonials/Testimonials';
 import { WhyUs } from '../../components/home/WhyUs/WhyUs';
 import { CTA } from '../../components/home/CTA/CTA';
+import { Seo } from '../../components/seo/Seo';
 
 export function Home() {
   return (
     <>
+      <Seo page="home" />
       <Hero />
       <LogoMarquee />
       <Stats />

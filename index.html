@@ -1,17 +1,41 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- seo:start — everything up to seo:end is regenerated per page by scripts/prerender.mjs -->
+    <title>2xdev — UK Web Development Agency for Startups &amp; Businesses</title>
     <meta
       name="description"
-      content="2xdev is a UK-based engineering partner building custom web apps, e-commerce, management systems and CMS platforms for startups and growing businesses."
+      content="2xdev is a UK web development company building custom web apps, Shopify &amp; e-commerce stores, management systems and CMS websites. Get a free, fixed-price quote."
     />
-    <title>2xdev — Engineering partner for founders and teams</title>
+    <link rel="canonical" href="https://2xdev.com/" />
+    <!-- seo:end -->
+
+    <meta name="author" content="2xdev Ltd" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#5b4ee6" />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Apply the saved/system theme before first paint to avoid a light→dark flash. -->
+    <script>
+      try {
+        var t = localStorage.getItem('2xdev-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

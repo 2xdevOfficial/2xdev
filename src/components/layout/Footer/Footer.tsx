@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { footerCols } from '../../../data/homeContent';
 import { isInternalHref } from '../../../utils/links';
-import logo from '../../../assets/images/logo.png';
+import logo from '../../../assets/images/logo-600.png';
 import styles from './Footer.module.css';
 
 function FooterLink({ href, label }: { href: string; label: string }) {
@@ -26,7 +26,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.grid}>
         <div>
-          <img src={logo} alt="2xdev" className={styles.logo} />
+          <img src={logo} loading="lazy" decoding="async" alt="2xdev — web development agency" width={79} height={30} className={styles.logo} />
           <p className={styles.blurb}>
             A UK-based engineering partner building fast, reliable software for startups and
             growing businesses.

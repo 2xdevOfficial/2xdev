@@ -1,0 +1,14 @@
+{
+  "name": "2xdev — UK Web Development Agency",
+  "short_name": "2xdev",
+  "description": "Custom web apps, e-commerce, management systems and CMS platforms for startups and growing businesses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfbfd",
+  "theme_color": "#5b4ee6",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

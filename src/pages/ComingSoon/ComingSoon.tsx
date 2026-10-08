@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import styles from './ComingSoon.module.css';
+import { Seo } from '../../components/seo/Seo';
 
 export function ComingSoon() {
   return (
     <section className={styles.section}>
-      <div className={styles.eyebrow}>Coming soon</div>
-      <h1 className={styles.title}>This page is on its way</h1>
+      <Seo page="notFound" />
+      <div className={styles.eyebrow}>404 · Page not found</div>
+      <h1 className={styles.title}>We couldn&apos;t find that page</h1>
       <p className={styles.subtitle}>
-        We&apos;re still building this part of the site. Head back home in the meantime.
+        The link may be broken or the page may have moved. Head back home to see what we do.
       </p>
       <Link to="/" className={styles.link}>
         ← Back to home

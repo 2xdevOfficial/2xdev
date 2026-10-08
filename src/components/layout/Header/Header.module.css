@@ -24,6 +24,7 @@
 
 .logo {
   height: 34px;
+  width: auto;
 }
 
 :global(:root[data-theme='dark']) .logo {

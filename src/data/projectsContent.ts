@@ -2,7 +2,7 @@ import type { Project } from '../types/home';
 import type { FeaturedProject } from '../types/projects';
 import type { StatItem } from '../types/shared';
 import dairyFarmProductsShot from '../assets/images/projects/dairy-farm-products.webp';
-import cniNewsShot from '../assets/images/projects/cni-news-shot.jpg';
+import cniNewsShot from '../assets/images/projects/cni-news-shot.webp';
 
 const DAIRY_FARM_PRODUCTS_URL = 'https://dairyfarmproduct.co.uk/';
 const RECRUITED_PEOPLE_URL = 'https://recruitedpeople.co.uk/';
