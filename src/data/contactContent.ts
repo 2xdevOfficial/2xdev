@@ -11,7 +11,7 @@ export const serviceChips: string[] = [
 
 export const infoCards: InfoCard[] = [
   { icon: '✉️', title: 'Email us', value: 'support@2xdev.com', href: 'mailto:support@2xdev.com' },
-  { icon: '📞', title: 'Call us', value: '+44 (0) 20 1234 5678', href: 'tel:+442012345678' },
+  { icon: '📞', title: 'Call us', value: '+447368165714', href: 'tel:+447368165714' },
   { icon: '📍', title: 'Where we are', value: 'United Kingdom · remote-first', href: '#form' },
   { icon: '🕑', title: 'Office hours', value: 'Mon–Fri, 9:00–18:00 GMT', href: '#form' },
 ];
