@@ -9,10 +9,10 @@ const RECRUITED_PEOPLE_URL = 'https://recruitedpeople.co.uk/';
 const CNI_NEWS_URL = 'https://cninews.tv/';
 
 export const projectStats: StatItem[] = [
-  { num: '250+', label: 'Projects delivered' },
+  { num: '50+', label: 'Projects delivered' },
   { num: '98%', label: 'Client satisfaction' },
-  { num: '40+', label: 'Team members' },
-  { num: '8', label: 'Years in business' },
+  { num: '5+', label: 'Team members' },
+  { num: '4', label: 'Years in business' },
 ];
 
 export const featuredProject: FeaturedProject = {
