@@ -1,6 +1,7 @@
 import { testimonials } from '../../../data/homeContent';
 import { SectionHeading } from '../../ui/SectionHeading/SectionHeading';
 import { TestimonialCard } from './TestimonialCard';
+import { TrustpilotWidget } from '../../shared/TrustpilotWidget/TrustpilotWidget';
 import styles from './Testimonials.module.css';
 
 export function Testimonials() {
@@ -16,6 +17,10 @@ export function Testimonials() {
         {testimonials.map((testimonial) => (
           <TestimonialCard key={testimonial.name} testimonial={testimonial} />
         ))}
+      </div>
+      <div className={styles.trustpilot}>
+        <p className={styles.trustpilotText}>Worked with us? We&apos;d love to hear how it went.</p>
+        <TrustpilotWidget />
       </div>
     </section>
   );
