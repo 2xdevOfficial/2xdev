@@ -4,7 +4,7 @@
     {
       "source": "/:path(.*)",
       "has": [{ "type": "host", "value": "automation.2xdev.com" }],
-      "destination": "https://2xdev.com/services/ai-automation",
+      "destination": "https://www.2xdev.com/services/ai-automation",
       "permanent": true
     }
   ]

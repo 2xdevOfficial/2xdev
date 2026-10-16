@@ -5,10 +5,10 @@
  *
  * Usage, AFTER deploying:  npm run indexnow
  *
- * The key file public/65025f7c1cad4e25ab6cd098f2b9b144.txt must be live at https://2xdev.com/65025f7c1cad4e25ab6cd098f2b9b144.txt
+ * The key file public/65025f7c1cad4e25ab6cd098f2b9b144.txt must be live at https://www.2xdev.com/65025f7c1cad4e25ab6cd098f2b9b144.txt
  * Google does not use IndexNow — use Search Console for Google.
  */
-const SITE = 'https://2xdev.com';
+const SITE = 'https://www.2xdev.com';
 const KEY = '65025f7c1cad4e25ab6cd098f2b9b144';
 
 const sitemap = await (await fetch(`${SITE}/sitemap.xml`)).text();

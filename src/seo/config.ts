@@ -15,7 +15,7 @@ import { caseStudies, caseStudyPath } from '../data/caseStudies';
  *
  * If the production domain ever changes, update SITE_URL here (no trailing slash).
  */
-export const SITE_URL = 'https://2xdev.com';
+export const SITE_URL = 'https://www.2xdev.com';
 export const SITE_NAME = '2xdev';
 export const DEFAULT_OG_IMAGE = '/og-image.png';
 export const LOCALE = 'en_GB';
