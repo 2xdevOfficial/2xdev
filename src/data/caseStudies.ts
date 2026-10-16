@@ -16,7 +16,7 @@ export const caseStudies: CaseStudy[] = [
     client: 'Dairy Farm Products',
     industry: 'Food & grocery retail',
     location: 'United Kingdom',
-    seoTitle: 'Grocery Website Development Case Study — Dairy Farm Products | 2xdev',
+    seoTitle: 'Grocery Website Development: Dairy Farm Products | 2xdev',
     seoDescription:
       'How 2xdev built a custom Next.js online grocery store for Dairy Farm Products — 20+ product categories, an admin dashboard and 0% platform fees.',
     primaryKeyword: 'grocery website development',
@@ -73,9 +73,9 @@ export const caseStudies: CaseStudy[] = [
     client: 'Recruited People',
     industry: 'Education recruitment',
     location: 'United Kingdom',
-    seoTitle: 'Education Recruitment Software Case Study — Recruited People | 2xdev',
+    seoTitle: 'Education Recruitment Software: Recruited People | 2xdev',
     seoDescription:
-      'How 2xdev built a custom education recruitment platform for Recruited People — candidate registration, DBS and safeguarding compliance tracking and interview scheduling.',
+      'How 2xdev built a custom education recruitment platform: candidate registration, DBS and safeguarding tracking, and interview scheduling.',
     primaryKeyword: 'education recruitment software',
     h1: 'An education recruitment platform for Recruited People',
     summary:
@@ -125,9 +125,9 @@ export const caseStudies: CaseStudy[] = [
     projectName: 'CNI News',
     client: 'CNI News',
     industry: 'News & media',
-    seoTitle: 'News Website Development Case Study — CNI News (WordPress) | 2xdev',
+    seoTitle: 'News Website Development: CNI News (WordPress) | 2xdev',
     seoDescription:
-      'How 2xdev built CNI News, a WordPress news platform with breaking news, video and event listings across 12 categories for Pakistani and British-Pakistani audiences.',
+      'How 2xdev built CNI News: a WordPress news platform with breaking news, video and event listings across 12 categories.',
     primaryKeyword: 'news website development',
     h1: 'A WordPress news platform for CNI News',
     summary:

@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     title: 'How much does a website cost in the UK? (2026 price guide)',
     seoTitle: 'How Much Does a Website Cost in the UK? 2026 Price Guide',
     seoDescription:
-      'Real UK website prices for 2026 — from £500 template sites to £30k+ custom web apps — plus the running costs most quotes leave out. From a UK development team.',
+      'Real UK website prices for 2026, from £500 template sites to £30k+ custom builds, plus the monthly running costs most quotes leave out.',
     primaryKeyword: 'how much does a website cost uk',
     keywords: [
       'how much should a website cost uk',
@@ -136,9 +136,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'shopify-vs-custom-ecommerce-website',
     title: 'Shopify vs a custom e-commerce website: which should you choose?',
-    seoTitle: 'Shopify vs Custom E-commerce Website: Which Is Right for You?',
+    seoTitle: 'Shopify vs Custom E-commerce Website: Which to Choose?',
     seoDescription:
-      'Shopify or a custom-built online store? An honest comparison of cost, fees, speed, SEO and flexibility — from developers who build both — to help UK retailers choose.',
+      'Shopify or a custom online store? An honest comparison of cost, fees, speed, SEO and flexibility from UK developers who build both.',
     primaryKeyword: 'shopify vs custom website',
     keywords: [
       'custom ecommerce website vs shopify',
@@ -243,7 +243,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'bespoke-crm-development-cost-uk',
     title: 'Bespoke CRM development in the UK: costs, timelines and when it’s worth it',
-    seoTitle: 'Bespoke CRM Development UK: Cost, Timeline & When It’s Worth It',
+    seoTitle: 'Bespoke CRM Development UK: Costs, Timelines & Value',
     seoDescription:
       'What does a bespoke CRM or management system cost in the UK? Real price ranges, timelines and a simple test for when custom beats off-the-shelf software.',
     primaryKeyword: 'bespoke crm system cost uk',

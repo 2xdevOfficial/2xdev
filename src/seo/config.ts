@@ -56,15 +56,15 @@ const staticPages = {
     path: '/',
     title: '2xdev — UK Web Development Agency for Startups & Businesses',
     description:
-      '2xdev is a UK web development company building custom web apps, Shopify & e-commerce stores, management systems and CMS websites. Get a free, fixed-price quote.',
+      'UK web development company building custom websites, web apps, Shopify stores, management systems and AI automation. Get a free, fixed-price quote.',
     breadcrumb: 'Home',
     sitemap: { priority: 1.0, changefreq: 'weekly' },
   },
   whatWeDo: {
     path: '/what-we-do',
-    title: 'Web Development Services — Custom Apps, Shopify & CMS | 2xdev',
+    title: 'Web Development Services: Apps, Shopify & CMS | 2xdev',
     description:
-      'Custom web development, e-commerce & Shopify stores, startup MVPs, management systems, WordPress CMS and API integrations — built by a senior UK engineering team.',
+      'Custom websites, Shopify stores, startup MVPs, management systems, AI automation, WordPress and API integrations from a senior UK engineering team.',
     breadcrumb: 'What We Do',
     sitemap: { priority: 0.9, changefreq: 'monthly' },
   },
@@ -72,7 +72,7 @@ const staticPages = {
     path: '/about',
     title: 'About 2xdev — A Senior UK Software Engineering Team',
     description:
-      'Meet 2xdev: a lean, senior-only UK engineering team founded in 2022. No account managers or hand-offs — you work directly with the engineers building your product.',
+      'Meet 2xdev: a senior-only UK engineering team founded in 2022. No account managers or hand-offs — you work directly with the engineers on your product.',
     breadcrumb: 'About',
     sitemap: { priority: 0.7, changefreq: 'monthly' },
   },
@@ -88,7 +88,7 @@ const staticPages = {
     path: '/contact',
     title: 'Contact 2xdev — Get a Free Web Development Quote',
     description:
-      'Tell us about your website or app project and get a clear plan, realistic timeline and free fixed-price quote. Email support@2xdev.com — we reply within one business day.',
+      'Tell us about your website or app and get a clear plan, timeline and free fixed-price quote. Email support@2xdev.com — we reply within one business day.',
     breadcrumb: 'Contact',
     sitemap: { priority: 0.8, changefreq: 'yearly' },
   },
@@ -203,7 +203,7 @@ export function organizationSchema(): JsonLd {
     email: EMAIL,
     telephone: PHONE,
     foundingDate: '2022',
-    founders: team
+    founder: team
       .filter((member) => member.role.toLowerCase().includes('founder'))
       .map((member) => ({ '@type': 'Person', name: member.name, jobTitle: member.role })),
     address: { '@type': 'PostalAddress', addressCountry: 'GB' },
@@ -281,7 +281,7 @@ function breadcrumbSchema(page: PageSeo): JsonLd {
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.breadcrumb,
-      item: absoluteUrl(crumb.path),
+      item: { '@type': 'WebPage', '@id': absoluteUrl(crumb.path), name: crumb.breadcrumb },
     })),
   };
 }
@@ -296,7 +296,7 @@ function webPageSchema(page: PageSeo, type = 'WebPage', extra: JsonLd = {}): Jso
     inLanguage: 'en-GB',
     isPartOf: { '@id': WEBSITE_ID },
     about: { '@id': ORG_ID },
-    primaryImageOfPage: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
+    primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE_URL}${DEFAULT_OG_IMAGE}`, width: 1200, height: 630 },
     ...extra,
   };
 }

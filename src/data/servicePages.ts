@@ -16,9 +16,9 @@ export const servicePages: ServicePage[] = [
     shortName: 'Web Development',
     icon: '💻',
     keywords: ['website development company UK', 'custom web development', 'bespoke website development', 'web application development'],
-    seoTitle: 'Website Development Company UK — Custom Web Development | 2xdev',
+    seoTitle: 'Website Development Company UK | Custom Web Dev | 2xdev',
     seoDescription:
-      'Bespoke website and web application development from a senior UK team. Fast, SEO-ready React, Angular, Next.js and Laravel builds with a fixed, itemised quote.',
+      'Bespoke websites and web apps from a senior UK team. Fast, SEO-ready React, Next.js and Laravel builds with a fixed, itemised quote.',
     badge: 'Custom web development · UK',
     h1: 'Website development that’s built to perform.',
     heroSubtitle:
@@ -181,9 +181,9 @@ export const servicePages: ServicePage[] = [
     shortName: 'AI Automation',
     icon: '🤖',
     keywords: ['AI automation for small business UK', 'AI automation agency UK', 'AI agents for business', 'private AI chatbot', 'self-hosted AI automation'],
-    seoTitle: 'AI Automation for Small Businesses UK — Private AI Agents | 2xdev',
+    seoTitle: 'AI Automation for Small Businesses UK | 2xdev',
     seoDescription:
-      'Custom AI chatbots, booking agents, invoice and document automation for UK businesses — hosted privately on your own systems or in the cloud. Free consultation.',
+      'Custom AI chatbots, booking agents and invoice and document automation for UK businesses, hosted privately on your own systems or in the cloud.',
     badge: 'AI automation · Private by design',
     h1: 'AI automation that takes the repetitive work off your team.',
     heroSubtitle:
