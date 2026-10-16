@@ -2,14 +2,16 @@ import { Link } from 'react-router-dom';
 import type { Project } from '../../../types/home';
 import { useRevealOnScroll } from '../../../hooks/useRevealOnScroll';
 import reveal from '../../../styles/reveal.module.css';
+import { caseStudyForProject, caseStudyPath } from '../../../data/caseStudies';
 import styles from './Projects.module.css';
 
 export function ProjectCard({ project }: { project: Project }) {
   const { ref, isVisible } = useRevealOnScroll<HTMLAnchorElement>();
+  const study = caseStudyForProject(project.name);
 
   return (
     <Link
-      to="/projects"
+      to={study ? caseStudyPath(study.slug) : '/projects'}
       ref={ref}
       className={[styles.card, reveal.reveal, isVisible ? reveal.visible : ''].join(' ')}
     >

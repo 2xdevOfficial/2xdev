@@ -1,0 +1,92 @@
+.body {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.section {
+  margin: 0 0 40px;
+  scroll-margin-top: 96px;
+}
+
+.section p {
+  margin: 0 0 18px;
+}
+
+.section strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 16px;
+}
+
+.link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.list {
+  margin: 0 0 18px;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  margin: 8px 0 22px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.5;
+  min-width: 520px;
+}
+
+.table caption {
+  caption-side: bottom;
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.table thead th {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.table tbody th {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: none;
+}

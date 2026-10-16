@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { Project } from '../../../types/home';
+import { caseStudyForProject, caseStudyPath } from '../../../data/caseStudies';
 import styles from './ProjectGrid.module.css';
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -36,6 +37,15 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
     </>
   );
+
+  const study = caseStudyForProject(project.name);
+  if (study) {
+    return (
+      <Link to={caseStudyPath(study.slug)} className={styles.card} aria-label={`${project.name} case study`}>
+        {content}
+      </Link>
+    );
+  }
 
   if (project.liveUrl) {
     return (

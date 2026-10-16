@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { getServicePage, servicePages, servicePath } from '../../data/servicePages';
 import { allProjects } from '../../data/projectsContent';
+import { blogPath, blogPosts } from '../../data/blogPosts';
 import { process, techGroups } from '../../data/homeContent';
 import { serviceKey } from '../../seo/config';
 import { Seo } from '../../components/seo/Seo';
@@ -21,6 +22,7 @@ export function ServicePage({ slug }: { slug: string }) {
   const service = getServicePage(slug);
   const projects = allProjects.filter((project) => service.relatedProjects.includes(project.name));
   const otherServices = servicePages.filter((item) => item.slug !== slug);
+  const guides = blogPosts.filter((post) => post.relatedServices.includes(slug));
 
   return (
     <>
@@ -106,6 +108,27 @@ export function ServicePage({ slug }: { slug: string }) {
               <ProjectCard key={project.name} project={project} />
             ))}
           </div>
+        </section>
+      )}
+
+      {guides.length > 0 && (
+        <section className={styles.section}>
+          <SectionHeading eyebrow="Guides" title={`Planning your ${service.shortName.toLowerCase()} project`} />
+          <ul className={styles.related}>
+            {guides.map((post) => (
+              <li key={post.slug}>
+                <Link to={blogPath(post.slug)} className={styles.relatedLink}>
+                  <span className={styles.relatedIcon} aria-hidden="true">
+                    📘
+                  </span>
+                  <span>{post.title}</span>
+                  <span className={styles.relatedArrow} aria-hidden="true">
+                    →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 

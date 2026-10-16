@@ -8,6 +8,11 @@ import { Contact } from './pages/Contact/Contact';
 import { ComingSoon } from './pages/ComingSoon/ComingSoon';
 import { ServicePage } from './pages/Service/ServicePage';
 import { servicePages } from './data/servicePages';
+import { BlogIndex } from './pages/Blog/BlogIndex';
+import { BlogPostPage } from './pages/Blog/BlogPostPage';
+import { CaseStudyPage } from './pages/CaseStudy/CaseStudyPage';
+import { blogPosts } from './data/blogPosts';
+import { caseStudies } from './data/caseStudies';
 
 /** Route table shared by the browser app (App.tsx) and the build-time prerenderer (entry-server.tsx). */
 export function AppRoutes() {
@@ -25,6 +30,17 @@ export function AppRoutes() {
             path={`services/${service.slug}`}
             element={<ServicePage key={service.slug} slug={service.slug} />}
           />
+        ))}
+        {caseStudies.map((study) => (
+          <Route
+            key={study.slug}
+            path={`projects/${study.slug}`}
+            element={<CaseStudyPage key={study.slug} slug={study.slug} />}
+          />
+        ))}
+        <Route path="blog" element={<BlogIndex />} />
+        {blogPosts.map((post) => (
+          <Route key={post.slug} path={`blog/${post.slug}`} element={<BlogPostPage key={post.slug} slug={post.slug} />} />
         ))}
         <Route path="*" element={<ComingSoon />} />
       </Route>

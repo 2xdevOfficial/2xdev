@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { featuredProject } from '../../../data/projectsContent';
+import { caseStudyForProject, caseStudyPath } from '../../../data/caseStudies';
 import styles from './FeaturedProject.module.css';
 
 export function FeaturedProject() {
+  const study = caseStudyForProject(featuredProject.name);
   const content = (
     <>
       <div className={styles.info}>
@@ -20,7 +22,7 @@ export function FeaturedProject() {
             ))}
           </div>
           <span className={styles.cta}>
-            {featuredProject.liveUrl ? 'Visit live site →' : 'Read the story →'}
+            {study || !featuredProject.liveUrl ? 'Read the case study →' : 'Visit live site →'}
           </span>
         </div>
       </div>
@@ -40,7 +42,11 @@ export function FeaturedProject() {
 
   return (
     <section className={styles.section}>
-      {featuredProject.liveUrl ? (
+      {study ? (
+        <Link to={caseStudyPath(study.slug)} className={styles.card}>
+          {content}
+        </Link>
+      ) : featuredProject.liveUrl ? (
         <a
           href={featuredProject.liveUrl}
           target="_blank"

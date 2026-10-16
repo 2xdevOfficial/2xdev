@@ -6,6 +6,8 @@ import { AppRoutes } from './AppRoutes';
 
 export { headTagsFor, indexablePages, pages, structuredDataFor, absoluteUrl, SITE_URL } from './seo/config';
 export { servicePages } from './data/servicePages';
+export { blogPosts } from './data/blogPosts';
+export { caseStudies } from './data/caseStudies';
 
 /** Used at build time only (scripts/prerender.mjs) to turn each route into static HTML. */
 export function render(url: string): string {

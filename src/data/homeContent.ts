@@ -17,6 +17,7 @@ export const navLinks: NavLink[] = [
   { label: "What We Do", href: "/what-we-do" },
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -238,6 +239,7 @@ export const footerCols: FooterColumn[] = [
       { label: "What We Do", href: "/what-we-do" },
       { label: "About Us", href: "/about" },
       { label: "Projects", href: "/projects" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
     ],
   },

@@ -24,7 +24,7 @@ const ssrEntry = ['entry-server.js', 'entry-server.mjs']
   .find((file) => fs.existsSync(file));
 if (!ssrEntry) throw new Error('Server bundle not found in dist-ssr/. Did `vite build --ssr` run?');
 
-const { render, pages, indexablePages, headTagsFor, structuredDataFor, absoluteUrl, servicePages, SITE_URL } = await import(
+const { render, pages, indexablePages, headTagsFor, structuredDataFor, absoluteUrl, servicePages, blogPosts, caseStudies, SITE_URL } = await import(
   pathToFileURL(ssrEntry).href
 );
 
@@ -89,7 +89,7 @@ for (const page of indexablePages) {
     page.path === '/' ? path.join(distDir, 'index.html') : path.join(distDir, page.path.slice(1), 'index.html');
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, buildPage(key, page.path));
-  console.log(`  prerendered ${page.path.padEnd(14)} → ${path.relative(root, outFile)}`);
+  console.log(`  prerendered ${page.path.padEnd(44)} → ${path.relative(root, outFile)}`);
 }
 
 // 404 page — most static hosts (Netlify, Vercel, Cloudflare Pages, GitHub Pages) serve this automatically.
@@ -104,7 +104,7 @@ ${indexablePages
   .map(
     (page) => `  <url>
     <loc>${absoluteUrl(page.path)}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${page.lastmod ?? today}</lastmod>
     <changefreq>${page.sitemap.changefreq}</changefreq>
     <priority>${page.sitemap.priority.toFixed(1)}</priority>
   </url>`,
@@ -128,10 +128,18 @@ const llms = `# 2xdev
 
 ${servicePages.map((s) => `- [${s.name}](${absoluteUrl(`/services/${s.slug}`)}): ${s.seoDescription}`).join('\n')}
 
+## Guides
+
+${blogPosts.map((p) => `- [${p.title}](${absoluteUrl(`/blog/${p.slug}`)}): ${p.seoDescription}`).join('\n')}
+
+## Case studies
+
+${caseStudies.map((c) => `- [${c.h1}](${absoluteUrl(`/projects/${c.slug}`)}): ${c.seoDescription}`).join('\n')}
+
 ## Pages
 
 ${indexablePages
-  .filter((page) => !page.path.startsWith('/services/'))
+  .filter((page) => !/^\/(services|blog|projects)\/./.test(page.path))
   .map((page) => `- [${page.breadcrumb}](${absoluteUrl(page.path)}): ${page.description}`)
   .join('\n')}
 `;

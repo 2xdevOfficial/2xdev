@@ -1,6 +1,8 @@
 import { faqs, infoCards } from '../data/contactContent';
 import { team } from '../data/aboutContent';
 import { servicePages, servicePath } from '../data/servicePages';
+import { blogPath, blogPosts } from '../data/blogPosts';
+import { caseStudies, caseStudyPath } from '../data/caseStudies';
 
 /**
  * Single source of truth for SEO.
@@ -43,6 +45,10 @@ export interface PageSeo {
   parent?: string;
   /** Include in sitemap.xml */
   sitemap?: { priority: number; changefreq: 'weekly' | 'monthly' | 'yearly' };
+  /** Last content change (YYYY-MM-DD) for sitemap <lastmod>; defaults to build date. */
+  lastmod?: string;
+  /** Open Graph type. */
+  ogType?: 'website' | 'article';
 }
 
 const staticPages = {
@@ -86,6 +92,14 @@ const staticPages = {
     breadcrumb: 'Contact',
     sitemap: { priority: 0.8, changefreq: 'yearly' },
   },
+  blog: {
+    path: '/blog',
+    title: 'Web Development Blog — Pricing Guides & Advice | 2xdev',
+    description:
+      'Honest UK pricing guides and comparisons on websites, e-commerce, MVPs and custom software — written by the senior engineers at 2xdev.',
+    breadcrumb: 'Blog',
+    sitemap: { priority: 0.7, changefreq: 'weekly' },
+  },
   notFound: {
     path: '/404',
     title: 'Page not found | 2xdev',
@@ -95,9 +109,11 @@ const staticPages = {
 } satisfies Record<string, PageSeo>;
 
 type StaticPageKey = keyof typeof staticPages;
-export type PageKey = StaticPageKey | `service:${string}`;
+export type PageKey = StaticPageKey | `service:${string}` | `post:${string}` | `case:${string}`;
 
 export const serviceKey = (slug: string): PageKey => `service:${slug}`;
+export const postKey = (slug: string): PageKey => `post:${slug}`;
+export const caseKey = (slug: string): PageKey => `case:${slug}`;
 
 /** Every page on the site, including one landing page per service. */
 export const pages: Record<string, PageSeo> = {
@@ -112,6 +128,36 @@ export const pages: Record<string, PageSeo> = {
         breadcrumb: service.shortName,
         parent: 'whatWeDo',
         sitemap: { priority: 0.9, changefreq: 'monthly' },
+      } satisfies PageSeo,
+    ]),
+  ),
+  ...Object.fromEntries(
+    blogPosts.map((post) => [
+      postKey(post.slug),
+      {
+        path: blogPath(post.slug),
+        title: post.seoTitle,
+        description: post.seoDescription,
+        breadcrumb: post.title,
+        parent: 'blog',
+        lastmod: post.dateModified,
+        ogType: 'article',
+        sitemap: { priority: 0.7, changefreq: 'monthly' },
+      } satisfies PageSeo,
+    ]),
+  ),
+  ...Object.fromEntries(
+    caseStudies.map((study) => [
+      caseKey(study.slug),
+      {
+        path: caseStudyPath(study.slug),
+        title: study.seoTitle,
+        description: study.seoDescription,
+        breadcrumb: study.client,
+        parent: 'projects',
+        lastmod: study.datePublished,
+        ogType: 'article',
+        sitemap: { priority: 0.7, changefreq: 'monthly' },
       } satisfies PageSeo,
     ]),
   ),
@@ -301,6 +347,74 @@ export function structuredDataFor(key: PageKey): JsonLd | null {
     return { '@context': 'https://schema.org', '@graph': graph };
   }
 
+  if (key.startsWith('post:')) {
+    const post = blogPosts.find((item) => `post:${item.slug}` === key)!;
+    const url = absoluteUrl(page.path);
+    graph.push(
+      webPageSchema(page, 'WebPage', { mainEntity: { '@id': `${url}#article` } }),
+      breadcrumbSchema(page),
+      {
+        '@type': 'BlogPosting',
+        '@id': `${url}#article`,
+        headline: post.title,
+        description: post.seoDescription,
+        url,
+        mainEntityOfPage: { '@id': `${url}#webpage` },
+        image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
+        datePublished: post.datePublished,
+        dateModified: post.dateModified,
+        inLanguage: 'en-GB',
+        articleSection: post.category,
+        keywords: [post.primaryKeyword, ...post.keywords].join(', '),
+        wordCount: post.sections
+          .flatMap((section) => [section.heading, ...(section.paragraphs ?? []), ...(section.bullets ?? []), ...(section.after ?? [])])
+          .join(' ')
+          .split(/\s+/).length,
+        author: {
+          '@type': 'Person',
+          name: post.author,
+          jobTitle: team.find((member) => member.name === post.author)?.role,
+          worksFor: { '@id': ORG_ID },
+          url: absoluteUrl('/about'),
+        },
+        publisher: { '@id': ORG_ID },
+        about: post.relatedServices.map((slug) => ({ '@id': serviceId(slug) })),
+      },
+      faqSchema(post.faqs),
+    );
+    return { '@context': 'https://schema.org', '@graph': graph };
+  }
+
+  if (key.startsWith('case:')) {
+    const study = caseStudies.find((item) => `case:${item.slug}` === key)!;
+    const url = absoluteUrl(page.path);
+    graph.push(
+      webPageSchema(page, 'WebPage', { mainEntity: { '@id': `${url}#article` } }),
+      breadcrumbSchema(page),
+      {
+        '@type': 'Article',
+        '@id': `${url}#article`,
+        headline: study.h1,
+        description: study.seoDescription,
+        url,
+        mainEntityOfPage: { '@id': `${url}#webpage` },
+        image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
+        datePublished: study.datePublished,
+        dateModified: study.datePublished,
+        inLanguage: 'en-GB',
+        articleSection: 'Case studies',
+        author: { '@id': ORG_ID },
+        publisher: { '@id': ORG_ID },
+        about: [
+          { '@type': 'Organization', name: study.client, url: study.liveUrl },
+          ...study.services.map((slug) => ({ '@id': serviceId(slug) })),
+        ],
+      },
+      faqSchema(study.faqs),
+    );
+    return { '@context': 'https://schema.org', '@graph': graph };
+  }
+
   switch (key) {
     case 'home':
       graph.push(webPageSchema(page));
@@ -309,7 +423,31 @@ export function structuredDataFor(key: PageKey): JsonLd | null {
       graph.push(webPageSchema(page, 'AboutPage'), breadcrumbSchema(page));
       break;
     case 'projects':
-      graph.push(webPageSchema(page, 'CollectionPage'), breadcrumbSchema(page));
+      graph.push(webPageSchema(page, 'CollectionPage'), breadcrumbSchema(page), {
+        '@type': 'ItemList',
+        name: '2xdev case studies',
+        itemListElement: caseStudies.map((study, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          url: absoluteUrl(caseStudyPath(study.slug)),
+          name: study.h1,
+        })),
+      });
+      break;
+    case 'blog':
+      graph.push(webPageSchema(page, 'CollectionPage'), breadcrumbSchema(page), {
+        '@type': 'Blog',
+        '@id': `${absoluteUrl(page.path)}#blog`,
+        name: '2xdev blog',
+        url: absoluteUrl(page.path),
+        publisher: { '@id': ORG_ID },
+        blogPost: blogPosts.map((post) => ({
+          '@type': 'BlogPosting',
+          headline: post.title,
+          url: absoluteUrl(blogPath(post.slug)),
+          datePublished: post.datePublished,
+        })),
+      });
       break;
     case 'whatWeDo':
       graph.push(webPageSchema(page, 'CollectionPage'), breadcrumbSchema(page), {
@@ -356,7 +494,7 @@ export function headTagsFor(key: PageKey): HeadTag[] {
   const tags: HeadTag[] = [
     meta('name', 'description', page.description),
     meta('name', 'robots', page.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'),
-    meta('property', 'og:type', 'website'),
+    meta('property', 'og:type', page.ogType ?? 'website'),
     meta('property', 'og:site_name', SITE_NAME),
     meta('property', 'og:locale', LOCALE),
     meta('property', 'og:title', page.title),
