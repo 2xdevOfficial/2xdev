@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "automation.2xdev.com" }],
+      "destination": "https://2xdev.com/services/ai-automation",
+      "permanent": true
+    }
+  ]
+}

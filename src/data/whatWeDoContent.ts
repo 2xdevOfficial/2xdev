@@ -30,6 +30,13 @@ export const serviceDetails: ServiceDetail[] = [
     tags: ['Laravel', 'Node', 'Angular'],
   },
   {
+    slug: 'ai-automation',
+    icon: '🤖',
+    title: 'AI Automation & Agents',
+    desc: 'Private AI chatbots, booking agents and invoice, document and data-entry automation — on your own servers or in the cloud.',
+    tags: ['AI agents', 'WhatsApp', 'Self-hosted'],
+  },
+  {
     slug: 'cms-wordpress-development',
     icon: '📝',
     title: 'CMS Development',

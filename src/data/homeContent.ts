@@ -250,6 +250,7 @@ export const footerCols: FooterColumn[] = [
       { label: "E-commerce & Shopify", href: "/services/ecommerce-development" },
       { label: "Startup & MVP", href: "/services/startup-mvp-development" },
       { label: "Management Systems", href: "/services/management-systems" },
+      { label: "AI Automation", href: "/services/ai-automation" },
       { label: "CMS & WordPress", href: "/services/cms-wordpress-development" },
       { label: "API & Integrations", href: "/services/api-integrations" },
     ],

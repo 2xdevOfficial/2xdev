@@ -228,6 +228,8 @@ export function organizationSchema(): JsonLd {
       'WordPress development',
       'MVP development',
       'Custom software development',
+      'AI automation',
+      'AI chatbots',
       'API integration',
       'Technical SEO',
       'React',
